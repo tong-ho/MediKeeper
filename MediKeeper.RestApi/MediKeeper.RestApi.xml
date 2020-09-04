@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MediKeeper.RestApi</name>
+    </assembly>
+    <members>
+        <member name="M:MediKeeper.RestApi.Controllers.ItemGroupsController.Get(MediKeeper.RestApi.Pagination.ItemQueryParameters)">
+            <summary>
+            Get items grouped by name, displaying the max price.
+            </summary>
+            <param name="itemQueryParameters">Pagination parameters</param>
+            <returns>A paged list of items.</returns>
+        </member>
+        <member name="M:MediKeeper.RestApi.Controllers.ItemGroupsController.Get(System.Int32)">
+            <summary>
+            Get an item grouped by name, displaying the max price.
+            </summary>
+            <param name="id">The id of the item.</param>
+            <returns>The requested item.</returns>
+        </member>
+        <member name="M:MediKeeper.RestApi.Controllers.ItemGroupsController.Post(MediKeeper.RestApi.Models.ItemCreateDto)">
+            <summary>
+            Create a new item.
+            </summary>
+            <param name="itemCreate">The fields othe item.</param>
+            <returns>The requested item.</returns>
+        </member>
+        <member name="M:MediKeeper.RestApi.Controllers.ItemGroupsController.Put(System.Int32,MediKeeper.RestApi.Models.ItemUpdateDto)">
+            <summary>
+            Updates an item.
+            </summary>
+            <param name="id"></param>
+            <param name="itemUpdate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MediKeeper.RestApi.Controllers.ItemGroupsController.Delete(System.Int32)">
+            <summary>
+            Deletes an item.
+            </summary>
+            <param name="id">The id of the item.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MediKeeper.RestApi.Filters.AutoMapperResultFilter.#ctor(System.Type,System.Type)">
+            <summary>
+            Will map the properties from sourceType to destinationType as defined in the AutoMapper profile.
+            </summary>
+            <param name="sourceType"></param>
+            <param name="destinationType"></param>
+        </member>
+        <member name="M:MediKeeper.RestApi.Filters.PaginationResultFilter.#ctor(System.String,System.String)">
+            <summary>
+            Requires that the pagination metadata be stored in HttpContext.Items in the paginationMetadataKey and queryParametersKey
+            </summary>
+            <param name="paginationMetadataKey"></param>
+            <param name="queryParametersKey"></param>
+        </member>
+        <member name="T:MediKeeper.RestApi.Models.ItemCreateDto">
+            <summary>
+            The model used to create an item.
+            </summary>
+        </member>
+        <member name="P:MediKeeper.RestApi.Models.ItemCreateDto.Name">
+            <summary>
+            The name of the item.
+            </summary>
+        </member>
+        <member name="P:MediKeeper.RestApi.Models.ItemCreateDto.Cost">
+            <summary>
+            The cost of the item.
+            </summary>
+        </member>
+        <member name="T:MediKeeper.RestApi.Models.ItemDto">
+            <summary>
+            The model of the item.
+            </summary>
+        </member>
+        <member name="P:MediKeeper.RestApi.Models.ItemDto.Id">
+            <summary>
+            The id of the item.
+            </summary>
+        </member>
+        <member name="P:MediKeeper.RestApi.Models.ItemDto.Name">
+            <summary>
+            The name of the item.
+            </summary>
+        </member>
+        <member name="P:MediKeeper.RestApi.Models.ItemDto.Cost">
+            <summary>
+            The cost of the item.
+            </summary>
+        </member>
+        <member name="T:MediKeeper.RestApi.Models.ItemUpdateDto">
+            <summary>
+            Model used to update an existing item. The item id should be passed as a query parameter.
+            </summary>
+        </member>
+        <member name="P:MediKeeper.RestApi.Models.ItemUpdateDto.Name">
+            <summary>
+            The name of the item.
+            </summary>
+        </member>
+        <member name="P:MediKeeper.RestApi.Models.ItemUpdateDto.Cost">
+            <summary>
+            The cost of the item.
+            </summary>
+        </member>
+        <member name="P:MediKeeper.RestApi.Pagination.ItemQueryParameters.SortBy">
+            <summary>
+            The column to sort by.
+            </summary>
+        </member>
+        <member name="T:MediKeeper.RestApi.Pagination.Order">
+            <summary>
+            The order used to sort results. 0 for ascending, 1 for descending.
+            </summary>
+        </member>
+        <member name="P:MediKeeper.RestApi.Pagination.QueryParameters.SortBy">
+            <summary>
+            The column to sort by.
+            </summary>
+        </member>
+        <member name="P:MediKeeper.RestApi.Pagination.QueryParameters.Order">
+            <summary>
+            The order used to sort results. 0 for ascending, 1 for descending.
+            </summary>
+        </member>
+        <member name="P:MediKeeper.RestApi.Pagination.QueryParameters.PageNumber">
+            <summary>
+            The page number that is being requested.
+            </summary>
+        </member>
+        <member name="P:MediKeeper.RestApi.Pagination.QueryParameters.PageSize">
+            <summary>
+            The size of the page being requested. The max page size is 100.
+            </summary>
+        </member>
+    </members>
+</doc>
