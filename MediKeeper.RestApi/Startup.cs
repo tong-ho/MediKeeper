@@ -14,13 +14,15 @@ namespace MediKeeper.RestApi
     public class Startup
     {
         public IConfiguration Configuration { get; }
-        public Startup(IWebHostEnvironment env)
+        public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appSettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appSettings.{env.EnvironmentName}.json", optional: false, reloadOnChange: true);
-            Configuration = builder.Build();
+            Configuration = configuration;
+
+            //var builder = new ConfigurationBuilder()
+            //    .SetBasePath(env.ContentRootPath)
+            //    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            //    .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: false, reloadOnChange: true);
+            //Configuration = builder.Build();
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -31,11 +33,11 @@ namespace MediKeeper.RestApi
             {
                 options.AddDefaultPolicy(
                     builder => builder
-                        .WithOrigins(allowedCorsOrigins)
+                        .AllowAnyOrigin()
                         .WithExposedHeaders(nameof(PaginationMetadata))
                         .AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .AllowCredentials());
+                        .AllowAnyMethod());
+                        //.AllowCredentials());
             });
 
             string connectionString = Configuration["ConnectionStrings:MediKeeper"];
@@ -67,7 +69,8 @@ namespace MediKeeper.RestApi
 
             app.UseCors();
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
+
 
             app.UseStaticFiles();
 

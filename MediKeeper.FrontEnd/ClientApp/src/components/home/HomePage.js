@@ -2,7 +2,7 @@ import React from "react";
 
 function HomePage() {
   return (
-    <>
+      <>
       <div className="row">
         <div className="col-12">
           <img

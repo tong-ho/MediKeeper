@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: medikeeperrestapi
+spec:
+  selector:
+    matchLabels:
+      app: medikeeperrestapi
+  template:
+    metadata:
+      labels:
+        app: medikeeperrestapi
+    spec:
+      containers:
+      - name: medikeeperrestapi
+        image: medikeepermicroservicesregistry.azurecr.io/medikeeperrestapi
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: medikeeperrestapi
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: medikeeperrestapi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: medikeeperfrontend
+spec:
+  selector:
+    matchLabels:
+      app: medikeeperfrontend
+  template:
+    metadata:
+      labels:
+        app: medikeeperfrontend
+    spec:
+      containers:
+      - name: medikeeperfrontend
+        image: medikeepermicroservicesregistry.azurecr.io/medikeeperfrontend
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: medikeeperfrontend
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: medikeeperfrontend

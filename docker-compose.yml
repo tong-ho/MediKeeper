@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  medikeeper.frontend:
+    image: medikeepercontainerregistry.azurecr.io/medikeeperfrontend
+    build:
+      context: .
+      dockerfile: MediKeeper.FrontEnd/Dockerfile
+    depends_on:
+      - "medikeeper.restapi"
+
+  medikeeper.restapi:
+    image: medikeepercontainerregistry.azurecr.io/medikeeperrestapi
+    build:
+      context: .
+      dockerfile: MediKeeper.RestApi/Dockerfile
